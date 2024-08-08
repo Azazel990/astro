@@ -1,0 +1,45 @@
+<?php
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
+use App\Rules\customPasswordRule;
+
+use Illuminate\Support\Facades\DB;
+use App\Models\Customer_Model;
+
+class Login extends Controller
+{
+   
+    public function index(){
+        if(View::exists("login")){
+            return view("login");
+        }
+    }
+
+    public function userLogin(Request $req){
+        
+        $req->validate(
+            [
+                "username" => "required",
+                "password" => ["required","min:3","max:10","alpha_num"]
+            ]
+        );
+
+        $data = Customer_Model::authUser($req->username,$req->password);
+
+        if(!empty($data)){
+            $this->makeLoginSession($data->id);
+            return redirect("/dashboard");
+        }else{
+            $req->session()->flash("login",false);
+            return redirect("/login");
+        }
+    }
+
+    private function makeLoginSession($user_id = null){
+        if(!is_null($user_id)) session(["user_id" => $user_id]);
+    }
+
+}
