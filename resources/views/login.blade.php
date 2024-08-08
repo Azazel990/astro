@@ -28,10 +28,7 @@
 						<?php 
 							if(session()->has("login")){
 								?>
-								<div class="alert alert-danger alert-dismissible fade show" role="alert">
-									<strong>Unauthorized!</strong> Login Details Not found
-									<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-								</div>
+									<x-alert_msg type="danger" msg="Unauthorized! Login Details Not found" />
 								<?php
 							}
 						?>
