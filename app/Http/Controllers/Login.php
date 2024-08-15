@@ -31,6 +31,7 @@ class Login extends Controller
 
         if(!empty($data)){
             $this->makeLoginSession($data->id);
+            $req->session()->flash("login",true);
             return redirect("/dashboard");
         }else{
             $req->session()->flash("login",false);

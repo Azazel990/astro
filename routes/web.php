@@ -9,9 +9,9 @@ Route::get('/', function () {
     return view('welcome'); 
 });
 
-Route::get('/sample/{number}', function ($number = 0) {
-    return view('sample',["number" => $number]);
-});
+// Route::get('/sample/{number}', function ($number = 0) {
+//     return view('sample',["number" => $number]);
+// });
 
 
 Route::redirect("/home","/");
@@ -23,4 +23,7 @@ Route::get("dashboard",[Dashboard::class,'index'])->name("dashboard");
 
 
 Route::post("userLogin",[Login::class,"userLogin"]);
+
+Route::view('base_template', 'base_template');
+Route::view('dashboardView', 'dashboard');
 

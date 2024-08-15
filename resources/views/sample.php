@@ -1,1 +1,1 @@
-<h1>The number is : <?php echo $number; ?></h1>
+<h1>The number is : <?php echo $name; ?></h1>
