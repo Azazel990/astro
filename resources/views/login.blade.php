@@ -23,7 +23,7 @@
 		<div class="card borderless">
 			<div class="row align-items-center ">
 				<div class="col-md-12">
-					<form action="userLogin" method="POST">
+					<form action="login1" method="POST">
 						@csrf
 						<?php 
 							if(session()->has("login")){

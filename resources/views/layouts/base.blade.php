@@ -10,6 +10,7 @@
     <meta name="description" content="" />
     <meta name="keywords" content="">
     <meta name="author" content="Phoenixcoded" />
+	<meta name="csrf-token" content="{{ csrf_token() }}" />
     <!-- Favicon icon -->
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
 
@@ -287,7 +288,7 @@
 									<div class="pro-head">
 										<img src="assets/images/user/avatar-1.jpg" class="img-radius" alt="User-Profile-Image">
 										<span>John Doe</span>
-										<a href="auth-signin.html" class="dud-logout" title="Logout">
+										<a class="dud-logout" title="Logout" onclick="logMeOut()">
 											<i class="feather icon-log-out"></i>
 										</a>
 									</div>
@@ -346,3 +347,26 @@
 <script defer src="assets/js/vendor-all.min.js"></script>
 <script defer src="assets/js/plugins/bootstrap.min.js"></script>
 <script defer src="assets/js/pcoded.min.js"></script>
+<script src="assets/js/common.js" defer></script>
+
+<script>
+	function logMeOut() {
+
+		if(!window.confirm("Are you sure you want to logout ?")) return;
+
+		$.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+		$.ajax({
+			type : "POST",
+			url : "<?php echo route('logout') ?>",
+			success : function(data){
+				location.reload();
+			}
+		})
+	}
+
+</script>

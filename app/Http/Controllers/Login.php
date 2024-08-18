@@ -8,13 +8,32 @@ use App\Rules\customPasswordRule;
 
 use Illuminate\Support\Facades\DB;
 use App\Models\Customer_Model;
+use Auth;
 
 class Login extends Controller
 {
+    public function __construct(){
+        // parent::__construct();
+    }
    
     public function index(){
         if(View::exists("login")){
             return view("login");
+        }
+    }
+
+    public function login1(Request $request){
+        $request->validate(
+            [
+                "username" => "required",
+                "password" => ["required","min:3","max:10","alpha_num"]
+            ]
+        );
+
+        if(Auth::attempt(['username' => $request->username, 'password' => $request->password])){
+            return redirect("dashboard");
+        }else{
+            return redirect("login");
         }
     }
 
@@ -35,7 +54,7 @@ class Login extends Controller
             return redirect("/dashboard");
         }else{
             $req->session()->flash("login",false);
-            return redirect("/login");
+            return redirect()->back()->withErrors(["username" => "Invalid Credentails"]);
         }
     }
 
