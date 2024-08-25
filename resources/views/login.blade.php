@@ -46,7 +46,7 @@
 								@error("password")<div class="invalid-feedback text-left">{{$message}}</div>@enderror
 							</div>
 							<div class="custom-control custom-checkbox text-left mb-4 mt-2">
-								<input type="checkbox" class="custom-control-input" id="customCheck1">
+								<input type="checkbox" class="custom-control-input" id="customCheck1" name="remember_me" value="yes">
 								<label class="custom-control-label" for="customCheck1">Save credentials.</label>
 							</div>
 							<button class="btn btn-block btn-primary mb-4" type="submit">Login</button>

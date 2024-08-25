@@ -8,6 +8,7 @@ use App\Rules\customPasswordRule;
 
 use Illuminate\Support\Facades\DB;
 use App\Models\Customer_Model;
+use App\Models\User;
 use Auth;
 
 class Login extends Controller
@@ -30,7 +31,7 @@ class Login extends Controller
             ]
         );
 
-        if(Auth::attempt(['username' => $request->username, 'password' => $request->password])){
+        if(Auth::attempt(['username' => $request->username, 'password' => $request->password],request()->filled('remember_me'))){
             return redirect("dashboard");
         }else{
             return redirect("login");
