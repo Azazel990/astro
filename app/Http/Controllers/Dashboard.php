@@ -13,7 +13,7 @@ class Dashboard extends Controller
     public function __construct(){
         parent::__construct();
     }
- 
+
     public function index(){
         if(View::exists("layouts.base")){
             $this->data["main_view"] = "dashboard";
@@ -22,4 +22,10 @@ class Dashboard extends Controller
             return view("layouts.base",$this->data);
         }
     }  
+
+    public function sample(){
+        return [
+            "user" => auth()->user()
+        ];
+    }
 }

@@ -20,10 +20,13 @@ Route::redirect("/home","/");
 // Adding Login controller
 Route::get("login",[Login::class,'index'])->name("login");
 
-
 Route::post("userLogin",[Login::class,"userLogin"]);
 Route::post("login1",[Login::class,"login1"]);
 
 Route::view('base_template', 'base_template');
 
 Route::post('logout', [Ajax::class,"logMeOut"])->name("logout");
+
+
+// Route::get("loginApp",[Login::class,"loginApp"]);
+// Route::get("test",[Login::class,"test"]);

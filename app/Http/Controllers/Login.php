@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Hash;
 use App\Rules\customPasswordRule;
 
 use Illuminate\Support\Facades\DB;
@@ -35,6 +36,16 @@ class Login extends Controller
             return redirect("dashboard");
         }else{
             return redirect("login");
+        }
+    }
+
+
+    public function loginApp(Request $request){
+        $user = User::where('email',request("email"))->first();
+        if(Hash::check(request("password"), $user->getAuthPassword())){
+            return [
+                'token' => $user->createToken(time())->plainTextToken
+            ];
         }
     }
 
