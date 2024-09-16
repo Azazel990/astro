@@ -318,12 +318,12 @@
                 <div class="row align-items-center">
                     <div class="col-md-12">
                         <div class="page-header-title">
-                            <h5 class="m-b-10">Sample Page</h5>
+                            <h5 class="m-b-10"><?php echo $page_title; ?></h5>
                         </div>
-                        <ul class="breadcrumb">
+                        <!-- <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
                             <li class="breadcrumb-item"><a href="#!">Sample Page</a></li>
-                        </ul>
+                        </ul> -->
                     </div>
                 </div>
             </div>

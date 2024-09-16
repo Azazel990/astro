@@ -51,7 +51,7 @@
 							</div>
 							<button class="btn btn-block btn-primary mb-4" type="submit">Login</button>
 							<hr>
-							<p class="mb-0 text-muted">Don’t have an account? <a href="auth-signup.html" class="f-w-400">Signup</a></p>
+							<p class="mb-0 text-muted">Don’t have an account? <a href="<?php echo url("signup") ?>" class="f-w-400">Signup</a></p>
 						</div>
 					</form>
 					

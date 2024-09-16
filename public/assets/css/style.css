@@ -4918,6 +4918,7 @@ input[type="button"].btn-block {
 .card-deck {
     display: flex;
     flex-direction: column;
+    margin-bottom: 20px;
 }
 
 .card-deck .card {
@@ -18150,7 +18151,7 @@ strong {
 
 .page-header {
     background: transparent;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
 }
 
 .page-header h5 {

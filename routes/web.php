@@ -19,9 +19,11 @@ Route::redirect("/home","/");
 
 // Adding Login controller
 Route::get("login",[Login::class,'index'])->name("login");
+Route::get("signup",[Login::class,'signup'])->name("signup");
 
 Route::post("userLogin",[Login::class,"userLogin"]);
 Route::post("login1",[Login::class,"login1"]);
+Route::post("signupUser",[Login::class,"signupUser"]);
 
 Route::view('base_template', 'base_template');
 

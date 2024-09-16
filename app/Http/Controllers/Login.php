@@ -24,10 +24,30 @@ class Login extends Controller
         }
     }
 
+    public function signup(){
+        if(View::exists("signup")){
+            return view("signup");
+        }
+    }
+
+    public function signupUser(Request $request){
+        $request->validate(
+            [
+                "username" => ["required","min:3","alpha_num","unique:users,username"],
+                "email" => ["required","unique:users,email"],
+                "password" => ["required","min:3","max:10","alpha_num",]
+            ]
+        );
+
+        if(User::addUser($request->username,$request->email,$request->password)){
+            return redirect("login");
+        }
+    }
+
     public function login1(Request $request){
         $request->validate(
             [
-                "username" => "required",
+                "username" => ["required","min:3","alpha_num"],
                 "password" => ["required","min:3","max:10","alpha_num"]
             ]
         );
@@ -49,29 +69,30 @@ class Login extends Controller
         }
     }
 
-    public function userLogin(Request $req){
+    // Old Login Code using Model based query authentication
+    // public function userLogin(Request $req){
         
-        $req->validate(
-            [
-                "username" => "required",
-                "password" => ["required","min:3","max:10","alpha_num"]
-            ]
-        );
+    //     $req->validate(
+    //         [
+    //             "username" => ["required","min:3","alpha_num"],
+    //             "password" => ["required","min:3","max:10","alpha_num"]
+    //         ]
+    //     );
 
-        $data = Customer_Model::authUser($req->username,$req->password);
+    //     $data = Customer_Model::authUser($req->username,$req->password);
 
-        if(!empty($data)){
-            $this->makeLoginSession($data->id);
-            $req->session()->flash("login",true);
-            return redirect("/dashboard");
-        }else{
-            $req->session()->flash("login",false);
-            return redirect()->back()->withErrors(["username" => "Invalid Credentails"]);
-        }
-    }
+    //     if(!empty($data)){
+    //         $this->makeLoginSession($data->id);
+    //         $req->session()->flash("login",true);
+    //         return redirect("/dashboard");
+    //     }else{
+    //         $req->session()->flash("login",false);
+    //         return redirect()->back()->withErrors(["username" => "Invalid Credentails"]);
+    //     }
+    // }
 
-    private function makeLoginSession($user_id = null){
-        if(!is_null($user_id)) session(["user_id" => $user_id]);
-    }
-
+    // private function makeLoginSession($user_id = null){
+    //     if(!is_null($user_id)) session(["user_id" => $user_id]);
+    // }
+    // Old Login Code using Model based query authentication
 }

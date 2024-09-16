@@ -18,7 +18,7 @@ class Dashboard extends Controller
         if(View::exists("layouts.base")){
             $this->data["main_view"] = "dashboard";
             $this->data["name"] = auth()->user()->username;
-            $this->data["title"] = "Dashboard";
+            $this->data["page_title"] = "Dashboard";
             return view("layouts.base",$this->data);
         }
     }  
