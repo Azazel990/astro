@@ -1,0 +1,27 @@
+
+<div>
+    <div class="container profile_card">
+        <div class="card_heading card_section">
+            <span>My Profile</span>
+        </div>
+
+		<div class="profile_pic card_section">
+            <img class="img-radius" src="assets/images/profile/bg-2.jpg" alt="User-Profile-Image">
+        </div>
+						
+		<div class="card_section user_info d-flex flex-column justify-content-center align-items-center">
+            <div class="info_div">
+                <label for="">User Name : </label>
+                <?php echo $user->username; ?>
+            </div>
+            <div class="info_div">
+                <label for="">Email : </label>
+                <?php echo $user->email; ?>
+            </div>
+            <div class="info_div">
+                <label for="">Member Since : </label>
+                <?php echo date("d M Y",strtotime($user->created_at)); ?>
+            </div>
+        </div>
+    </div>
+</div>

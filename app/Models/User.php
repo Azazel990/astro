@@ -58,4 +58,6 @@ class User extends Authenticatable
             "updated_at" => current_timestamp(),
         ]);
     }
+
+    
 }

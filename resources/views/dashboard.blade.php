@@ -1,12 +1,12 @@
 
 
 
-<div class="row">
+<div class="">
     <!-- [ sample-page ] start -->
     <div class="col-xl-12">
         <h5 class="mt-4">My Feed</h5>
         <hr>
-        <div class="card-deck">
+        <div class="row card-deck">
             <div class="card">
                 <img class="img-fluid card-img-top" src="assets/images/slider/img-slide-2.jpg" alt="Card image cap">
                 <div class="card-body">
@@ -51,7 +51,7 @@
 
         </div>
 
-        <div class="card-deck">
+        <div class="row card-deck">
             <div class="card">
                 <img class="img-fluid card-img-top" src="assets/images/slider/img-slide-2.jpg" alt="Card image cap">
                 <div class="card-body">

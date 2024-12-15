@@ -30175,3 +30175,43 @@ new-task label input[type=checkbox] {
 }
 
 /**====== user card css end ======**/
+
+
+/* custom css */
+.profile_card{
+    max-width: 800px;
+    padding: 0 !important;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.profile_card .card_section{
+    padding: 35px 0;
+}
+
+.profile_card .card_heading{
+    background-color: #2C3E50;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+.profile_card .card_heading span{
+    padding-left: 25px;
+}
+.profile_pic{
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.profile_pic img{
+    width: 150px;
+    height: 150px;
+}
+
+.profile_card .user_info .info_div{
+    margin: 5px 0;
+}
+.profile_card .user_info .info_div label{
+    font-weight: bold;
+}
+
+/* custom css */

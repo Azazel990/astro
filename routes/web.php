@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Login;
 use App\Http\Controllers\Dashboard;
+use App\Http\Controllers\User;
 use App\Http\Controllers\Ajax;
 
 Route::get('/', [Login::class,'index']);
@@ -13,6 +14,7 @@ Route::get('/', [Login::class,'index']);
 
 Route::middleware(['auth'])->group(function () {
     Route::get("dashboard",[Dashboard::class,'index'])->name("dashboard");
+    Route::get("user_profile",[User::class,'index'])->name("user_profile");
 });
 
 Route::redirect("/home","/");
