@@ -30185,7 +30185,7 @@ new-task label input[type=checkbox] {
 }
 
 .profile_card .card_section{
-    padding: 35px 0;
+    padding: 15px 0;
 }
 
 .profile_card .card_heading{
@@ -30193,14 +30193,18 @@ new-task label input[type=checkbox] {
     color: #fff;
     font-weight: bold;
     font-size: 1.5em;
+    padding: 10px 25px;
 }
-.profile_card .card_heading span{
-    padding-left: 25px;
+.heading_icons a{
+    margin: 0 10px;
+    cursor: pointer;
 }
 .profile_pic{
     width: 25%;
     margin-left: auto;
     margin-right: auto;
+    display: flex;
+    justify-content: center;
 }
 .profile_pic img{
     width: 150px;

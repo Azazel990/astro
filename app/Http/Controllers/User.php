@@ -18,4 +18,13 @@ class User extends Controller
             return view("layouts.base",$this->data);
         }
     }
+    public function edit(){
+        if(View::exists("layouts.base")){
+            $this->data["main_view"] = "edit_profile";
+            $this->data["page_title"] = "Edit Profile";
+
+            $this->data["user"] = auth()->user();
+            return view("layouts.base",$this->data);
+        }
+    }
 }

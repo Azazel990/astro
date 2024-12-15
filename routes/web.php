@@ -14,7 +14,8 @@ Route::get('/', [Login::class,'index']);
 
 Route::middleware(['auth'])->group(function () {
     Route::get("dashboard",[Dashboard::class,'index'])->name("dashboard");
-    Route::get("user_profile",[User::class,'index'])->name("user_profile");
+    Route::get("profile",[User::class,'index'])->name("profile");
+    Route::get("edit",[User::class,'edit'])->name("edit");
 });
 
 Route::redirect("/home","/");

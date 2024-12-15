@@ -1,8 +1,12 @@
 
 <div>
     <div class="container profile_card">
-        <div class="card_heading card_section">
+        <div class="card_heading card_section d-flex justify-content-between">
             <span>My Profile</span>
+            <div class="heading_icons">
+                <a href="<?php echo route('edit') ?>"><i class="feather icon-settings"></i></a>
+                <a><i class="feather icon-edit"></i></a>
+            </div>
         </div>
 
 		<div class="profile_pic card_section">
