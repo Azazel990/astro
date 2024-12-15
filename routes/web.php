@@ -16,6 +16,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get("dashboard",[Dashboard::class,'index'])->name("dashboard");
     Route::get("profile",[User::class,'index'])->name("profile");
     Route::get("edit",[User::class,'edit'])->name("edit");
+    Route::post("edit_profile",[User::class,'edit_profile'])->name("edit_profile");
 });
 
 Route::redirect("/home","/");

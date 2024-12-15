@@ -59,5 +59,7 @@ class User extends Authenticatable
         ]);
     }
 
-    
+    // static public function editProfile($username = null,$email = null){
+    //     return DB::table('users')
+    // }
 }
