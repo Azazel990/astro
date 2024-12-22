@@ -43,7 +43,6 @@ class User extends Controller
 
     public function change_password_post(Request $request){
         $rules = ["required","min:3","max:10","alpha_num"];
-        
         $request->validate(
             [
                 "current_password" =>$rules,
@@ -52,12 +51,23 @@ class User extends Controller
             ]
         );
 
+        $request->session()->flash("flash",true);
+        if(request("new_password") != request("new_password_confirm")){
+            $request->session()->flash("flash-type","danger");
+            $request->session()->flash("flash-msg","Password Doesn't Match");
+            return \redirect("password");
+        }
+
         $user = auth()->user();
 
         if(Hash::check(request("current_password"), $user->password)){
            $updated = User_Model::where("id",$user->id)->update(["password" => Hash::make(request("new_password")) ,"updated_at" => current_timestamp()]);
+           $request->session()->flash("flash-type","success");
+           $request->session()->flash("flash-msg","Password Changed Successfully");
            return \redirect("profile");
         }else{
+            $request->session()->flash("flash-type","danger");
+            $request->session()->flash("flash-msg","Failed to change Password");
             return \redirect("password");
         }
     }

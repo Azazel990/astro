@@ -309,6 +309,7 @@
 	
 	
 
+
 <!-- [ Main Content ] start -->
 <div class="pcoded-main-container">
     <div class="pcoded-content">
@@ -317,13 +318,42 @@
             <div class="page-block">
                 <div class="row align-items-center">
                     <div class="col-md-12">
+
+						<!-- Toast start -->
+						<div style="position:absolute;right: 40px">
+							<div class="toast hide toast-right" role="alert" aria-live="assertive" data-delay="1000" aria-atomic="true">
+								<div class="toast-header">
+									<img src="assets/images/favicon.ico" alt="" class="img-fluid m-r-5" style="width:20px;">
+									<strong class="mr-auto">Bootstrap</strong>
+									<small class="text-muted">11 mins ago</small>
+									<button type="button" class="m-l-5 mb-1 mt-1 close" data-dismiss="toast" aria-label="Close">
+										<span>&times;</span>
+									</button>
+								</div>
+								<div class="toast-body">
+									Hello, world! This is a toast message.
+								</div>
+							</div>
+						</div>
+						<!-- <button class="btn  btn-primary" onclick="$('.toast-right').toast('show')">Right</button> -->
+							<!-- Toast end -->
+							
+
+						<!-- Alert Msg start -->
+						<?php 
+							if(session("flash")){
+								$type = session()->get("flash-type");
+								$msg = session()->get("flash-msg");
+								?>	
+									<x-alert_msg type="<?php echo $type; ?>" msg="<?php echo $msg; ?>" />
+								<?php
+							}
+							?>
+						<!-- Alert Msg end -->
+						
                         <div class="page-header-title">
                             <h5 class="m-b-10"><?php echo $page_title; ?></h5>
                         </div>
-                        <!-- <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
-                            <li class="breadcrumb-item"><a href="#!">Sample Page</a></li>
-                        </ul> -->
                     </div>
                 </div>
             </div>
