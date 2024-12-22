@@ -13,10 +13,15 @@ Route::get('/', [Login::class,'index']);
 // });
 
 Route::middleware(['auth'])->group(function () {
+
     Route::get("dashboard",[Dashboard::class,'index'])->name("dashboard");
     Route::get("profile",[User::class,'index'])->name("profile");
     Route::get("edit",[User::class,'edit'])->name("edit");
+    Route::get("password",[User::class,'change_password'])->name("change_password");
+
+
     Route::post("edit_profile",[User::class,'edit_profile'])->name("edit_profile");
+    Route::post("change_password_post",[User::class,'change_password_post'])->name("change_password_post");
 });
 
 Route::redirect("/home","/");
@@ -33,6 +38,3 @@ Route::view('base_template', 'base_template');
 
 Route::post('logout', [Ajax::class,"logMeOut"])->name("logout");
 
-
-// Route::get("loginApp",[Login::class,"loginApp"]);
-// Route::get("test",[Login::class,"test"]);

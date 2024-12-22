@@ -4,8 +4,15 @@
         <div class="card_heading card_section d-flex justify-content-between">
             <span>My Profile</span>
             <div class="heading_icons">
-                <a href="<?php echo route('edit') ?>"><i class="feather icon-settings"></i></a>
-                <a><i class="feather icon-edit"></i></a>
+                <a class="select_option" href="<?php echo route('edit') ?>"><i class="feather icon-settings"></i></a>
+                <div class="btn-group card-option">
+                    <button type="button" class="btn dropdown-toggle btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="feather icon-more-horizontal select_option"></i>
+                    </button>
+                    <ul class="list-unstyled card-option dropdown-menu dropdown-menu-right">
+                        <li class="dropdown-item reload-card"><a href="<?php echo route('change_password') ?>"><i class="feather icon-refresh-cw"></i>Change Password</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
 
