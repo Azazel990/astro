@@ -126,7 +126,7 @@
 			
 				<div class="m-header">
 					<a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
-					<a href="#!" class="b-brand">
+					<a href="<?php echo route("dashboard") ?>" class="b-brand">
 						<!-- ========   change your logo hear   ============ -->
 						<img src="assets/images/logo.png" alt="" class="logo">
 						<img src="assets/images/logo-icon.png" alt="" class="logo-thumb">
@@ -135,7 +135,7 @@
 						<i class="feather icon-more-vertical"></i>
 					</a>
 				</div>
-				<div class="collapse navbar-collapse">
+				<!-- <div class="collapse navbar-collapse">
 					<ul class="navbar-nav mr-auto">
 						<li class="nav-item">
 							<a href="#!" class="pop-search"><i class="feather icon-search"></i></a>
@@ -301,7 +301,7 @@
 							</div>
 						</li>
 					</ul>
-				</div>
+				</div> -->
 				
 			
 	</header>
