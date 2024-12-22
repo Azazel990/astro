@@ -30,6 +30,39 @@ class User extends Controller
             return view("layouts.base",$this->data);
         }
     }
+    public function edit_profile(Request $request){
+        $request->validate(
+            [
+                "username" => ["required","min:3","alpha_num"],
+                "email" => ["required","email"]
+            ]
+        );
+
+        $logged_in_user = auth()->user();
+
+        $user = User_Model::whereNot("id" , $logged_in_user->id)->where("username" , $request->username)->get()->first();
+
+        $request->session()->flash("flash",true);
+
+        if(empty($user)){
+            $update = User_Model::where("id",$logged_in_user->id)->update(["username"=>$request->username,"email" => $request->email]);
+        
+            if($update){
+                $request->session()->flash("flash-type","success");
+                $request->session()->flash("flash-msg","Details Updated Successfully");
+                return redirect("profile");
+            }else{
+                $request->session()->flash("flash-type","danger");
+                $request->session()->flash("flash-msg","Failed to update details");
+                return redirect("edit");
+            }
+        }else{
+            $request->session()->flash("flash-type","danger");
+            $request->session()->flash("flash-msg","Username Alerady Taken");
+            return redirect("edit");
+        }
+       
+    }
 
     public function change_password(){
         if(View::exists("layouts.base")){
@@ -72,28 +105,5 @@ class User extends Controller
         }
     }
 
-    public function edit_profile(Request $request){
-        $request->validate(
-            [
-                "username" => ["required","min:3","alpha_num"],
-                "email" => ["required","email"]
-            ]
-        );
-
-        $logged_in_user = auth()->user();
-
-        $user = User_Model::whereNot("id" , $logged_in_user->id)->where("username" , $request->username)->get()->first();
-        if(empty($user)){
-            $update = User_Model::where("id",$logged_in_user->id)->update(["username"=>$request->username,"email" => $request->email]);
-        
-            if($update){
-                return redirect("profile");
-            }else{
-                return redirect("edit");
-            }
-        }else{
-            return redirect("edit");
-        }
-       
-    }
+   
 }
