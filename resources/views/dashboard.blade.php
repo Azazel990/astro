@@ -1,10 +1,13 @@
 
 
 
-<div class="">
+<div class="mt-4">
     <!-- [ sample-page ] start -->
     <div class="col-xl-12">
-        <h5 class="mt-4">My Feed</h5>
+        <div class="row d-flex justify-content-between">
+            <h5 class="">My Feed</h5>
+            <a href="<?php echo route("newPost") ?>" class="btn btn-success btn-sm"><i class="feather icon-plus"></i> Create Post</a>
+        </div>
         <hr>
         <div class="row card-deck">
             <div class="card">

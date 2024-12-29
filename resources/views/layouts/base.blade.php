@@ -378,6 +378,7 @@
 <script defer src="assets/js/plugins/bootstrap.min.js"></script>
 <script defer src="assets/js/pcoded.min.js"></script>
 <script src="assets/js/common.js" defer></script>
+<script src="assets/js/plugins/jquery-ui.min.js" defer></script>
 
 <script>
 	function logMeOut() {

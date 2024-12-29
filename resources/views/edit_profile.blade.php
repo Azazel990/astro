@@ -10,7 +10,7 @@
                         <i class="feather icon-more-horizontal select_option"></i>
                     </button>
                     <ul class="list-unstyled card-option dropdown-menu dropdown-menu-right">
-                        <li class="dropdown-item reload-card"><a href=""><i class="feather icon-refresh-cw"></i>Change Password</a></li>
+                        <li class="dropdown-item reload-card"><a href="<?php echo route("change_password") ?>"><i class="feather icon-refresh-cw"></i>Change Password</a></li>
                     </ul>
                 </div>
             </div>

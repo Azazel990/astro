@@ -30225,4 +30225,11 @@ new-task label input[type=checkbox] {
     width: unset !important;
 }
 
+#samll_form{
+    width: 50%;
+    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* custom css */
