@@ -6,18 +6,18 @@
         </div>
     </div>
     
-    <form id="samll_form" action="createNewPost" method="POST">
+    <form id="samll_form" action="createNewPost" method="POST" enctype="multipart/form-data">
         @csrf
-        <input type="file" name="post_img" class="form-control d-none" id="customFile1" onchange="displaySelectedImage(event, 'selectedImage')" />
+        <input type="file" name="post_img" class="form-control d-none" id="customFile1" onchange="displaySelectedImage(event, 'selectedImage')"  />
         <div class="form-group row">
-            <label for="inputEmail3" class="col-sm-4 col-form-label">User Name</label>
+            <label for="inputEmail3" class="col-sm-4 col-form-label">Post Title</label>
             <div class="col-sm-9">
                 <input type="text" name="post_title" class="form-control" id="inputEmail3" placeholder="User Name"
                     value="">
             </div>
         </div>
         <div class="form-group">
-            <label for="exampleFormControlTextarea1">Example textarea</label>
+            <label for="exampleFormControlTextarea1">Post Description</label>
             <textarea name="post_desc" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
         </div>
 
