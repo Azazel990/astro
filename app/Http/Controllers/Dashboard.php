@@ -19,6 +19,8 @@ class Dashboard extends Controller
             $this->data["main_view"] = "dashboard";
             $this->data["name"] = auth()->user()->username;
             $this->data["page_title"] = "Dashboard";
+
+            
             return view("layouts.base",$this->data);
         }
     }  
