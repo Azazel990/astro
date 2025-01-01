@@ -9,4 +9,12 @@ function current_timestamp(){
     date_default_timezone_set("Asia/Kolkata");
     return date("Y-m-d h:i:s");
 }
+
+function getImagePath($path = ""){
+    return "storage/uploads/".$path;
+}
+
+function getLoggedInUserName(){
+    return auth()->user()->username;
+}
 ?>

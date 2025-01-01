@@ -4905,6 +4905,7 @@ input[type="button"].btn-block {
 
 .card-img-top {
     width: 100%;
+    max-height: 300px;
     border-top-left-radius: calc(2px - 0px);
     border-top-right-radius: calc(2px - 0px);
 }
@@ -4927,18 +4928,21 @@ input[type="button"].btn-block {
 
 @media (min-width: 576px) {
     .card-deck {
-        flex-flow: row wrap;
+        flex-direction: row;
+        flex-wrap: wrap;
+        /* flex-flow: row wrap; */
         margin-right: -15px;
         margin-left: -15px;
     }
 
     .card-deck .card {
         display: flex;
-        flex: 1 0 0%;
+        /* flex: 1 0 0%; */
         flex-direction: column;
         margin-right: 15px;
-        margin-bottom: 0;
+        margin-bottom: 15px;
         margin-left: 15px;
+        width: 400px !important;
     }
 }
 

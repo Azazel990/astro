@@ -12,4 +12,7 @@ class Posts_Model extends Model
     use HasFactory;
     protected $table = "posts";
 
+    static public function getAllPosts(){
+        return DB::table('posts')->where(["status" => 1])->get(["post_id","post_title","post_thumb","post_description"]);
+    }
 }

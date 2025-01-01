@@ -34,7 +34,7 @@
 					<div class="main-menu-header">
 						<img class="img-radius" src="assets/images/user/avatar-2.jpg" alt="User-Profile-Image">
 						<div class="user-details">
-							<span>John Doe</span>
+							<span><?php echo ucwords(getLoggedInUserName()); ?></span>
 							<div id="more-details">UX Designer<i class="fa fa-chevron-down m-l-5"></i></div>
 						</div>
 					</div>
