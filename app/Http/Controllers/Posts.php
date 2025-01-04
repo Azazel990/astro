@@ -54,10 +54,10 @@ class Posts extends Controller
     }
 
     public function updatePost(int $post_id = 0){
-        $post = Post_Model::where(["post_id" => $post_id])->get()->first();
-        
+        $this->data["post"] = Post_Model::where(["post_id" => $post_id])->get()->first();
+
         // checking if user is allowed to update post
-        if(Gate::denies("check-update-user",$post)){
+        if(Gate::denies("check-update-user",$this->data["post"])){
             return redirect("dashboard");
         }
 
@@ -67,5 +67,9 @@ class Posts extends Controller
             $this->data["page_title"] = "Update Post";
             return view("layouts.base",$this->data);
         }
+    }
+
+    public function updatePostDB(){
+        
     }
 }

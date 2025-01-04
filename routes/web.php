@@ -19,7 +19,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get("profile",[User::class,'index'])->name("profile");
     Route::get("edit",[User::class,'edit'])->name("edit");
     Route::get("password",[User::class,'change_password'])->name("change_password");
-    Route::get("newPost",[Posts::class,'newPost'])->name("newPost");
+    Route::get("post/new",[Posts::class,'newPost'])->name("newPost");
     Route::get("post/update/{post_id?}",[Posts::class,'updatePost'])->whereNumber('post_id')->name("updatePost");
     
     Route::get("compressImage",[Posts::class,'compressImage'])->name("compressImage");
@@ -27,6 +27,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post("edit_profile",[User::class,'edit_profile'])->name("edit_profile");
     Route::post("change_password_post",[User::class,'change_password_post'])->name("change_password_post");
     Route::post("createNewPost",[Posts::class,'createNewPost'])->name("createNewPost");
+    Route::post("updatePostDB",[Posts::class,'updatePostDB'])->name("updatePostDB");
 });
 
 Route::redirect("/home","/");

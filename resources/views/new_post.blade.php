@@ -6,7 +6,7 @@
         </div>
     </div>
     
-    <form id="samll_form" action="createNewPost" method="POST" enctype="multipart/form-data">
+    <form id="samll_form" action="<?php echo route('createNewPost') ?>" method="POST" enctype="multipart/form-data">
         @csrf
         <input type="file" name="post_img" class="form-control d-none" id="customFile1" onchange="displaySelectedImage(event, 'selectedImage')"  />
         <div class="form-group row">
