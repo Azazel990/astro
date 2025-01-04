@@ -1,3 +1,3 @@
 <?php 
-define('UPLOAD_PATH',url('storage/uploads/'));
+// define('UPLOAD_URL',url('storage/uploads'));
 ?>

@@ -12,6 +12,16 @@ class Posts_Model extends Model
     use HasFactory;
     protected $table = "posts";
 
+    public $timestamps = false;
+
+    protected $fillable = [
+        'post_title',
+        'post_thumb',
+        'post_description',
+        'status',
+        'user_id'
+    ];
+
     static public function getAllPosts(){
         return DB::table('posts')->where(["status" => 1])->get(["post_id","user_id","post_title","post_thumb","post_description"]);
     }

@@ -14,6 +14,10 @@ function getImagePath($path = ""){
     return "storage/uploads/".$path;
 }
 
+function getUploadPath($path = ""){
+    return url('storage/uploads/'.$path);
+}
+
 function getLoggedInUserName(){
     return auth()->user()->username;
 }

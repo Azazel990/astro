@@ -2,7 +2,6 @@
 
 
 <div class="mt-4">
-    <!-- [ sample-page ] start -->
     <div class="col-xl-12">
         <div class="row d-flex justify-content-between">
             <h5 class="">My Feed</h5>
@@ -33,6 +32,5 @@
             ?>
         </div>
     </div>
-    <!-- [ sample-page ] end -->
 </div>
         

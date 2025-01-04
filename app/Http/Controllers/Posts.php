@@ -69,7 +69,32 @@ class Posts extends Controller
         }
     }
 
-    public function updatePostDB(){
-        
+    public function updatePostDB(Request $request){
+        $request->validate(
+            [
+                "post_title" => ["required","min:3","max:25"],
+                "post_desc" => ["alpha_num"],
+            ]
+        );
+
+        $post = Post_Model::where(["post_id" => $request->post_id])->get()->first();
+
+        // checking if user is allowed to update post
+         if(Gate::denies("check-update-user",$post)){
+            return redirect("dashboard");
+        }
+
+        $user = auth()->user();
+        $updated = Post_Model::where("post_id",$request->post_id)->update(["post_title" => $request->post_title,"post_description" => $request->post_desc]);
+
+        if($updated){
+            $request->session()->flash("flash-type","success");
+            $request->session()->flash("flash-msg","Post Updated successfully");
+            return redirect("dashboard");
+        }else{
+            $request->session()->flash("flash-type","danger");
+            $request->session()->flash("flash-msg","Failed to update post");
+            return back();
+        }
     }
 }

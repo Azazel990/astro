@@ -1,14 +1,14 @@
 <div class="container">
     <div>
         <div class="mb-4 d-flex justify-content-center">
-            <img id="selectedImage" src="<?php echo UPLOAD_PATH.'/'.$post->post_thumb; ?>"
+            <img id="selectedImage" src="<?php echo getUploadPath($post->post_thumb); ?>"
                 alt="example placeholder" style="width: 300px;" />
         </div>
     </div>
     
     <form id="samll_form" action="<?php echo route('updatePostDB') ?>" method="POST" enctype="multipart/form-data">
         @csrf
-        <input type="file" name="post_img" class="form-control d-none" id="customFile1" onchange="displaySelectedImage(event, 'selectedImage')" value="<?php echo UPLOAD_PATH.'/'.$post->post_thumb; ?>" />
+        <input type="file" name="post_img" class="form-control d-none" id="customFile1" onchange="displaySelectedImage(event, 'selectedImage')" value="<?php echo getUploadPath($post->post_thumb); ?>" />
         <div class="form-group row">
             <label for="inputEmail3" class="col-sm-4 col-form-label">Post Title</label>
             <div class="col-sm-9">
@@ -22,6 +22,7 @@
         </div>
 
         <div class="form-group row" align="right">
+            <input type="hidden" name="post_id" value="<?php echo $post->post_id ?>">
             <div class="col-sm-10" style="margin-left:auto;">
                 <button type="submit" class="btn  btn-primary">Update</button>
             </div>

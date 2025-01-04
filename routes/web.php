@@ -22,7 +22,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get("post/new",[Posts::class,'newPost'])->name("newPost");
     Route::get("post/update/{post_id?}",[Posts::class,'updatePost'])->whereNumber('post_id')->name("updatePost");
     
-    Route::get("compressImage",[Posts::class,'compressImage'])->name("compressImage");
 
     Route::post("edit_profile",[User::class,'edit_profile'])->name("edit_profile");
     Route::post("change_password_post",[User::class,'change_password_post'])->name("change_password_post");
