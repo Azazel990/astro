@@ -13,6 +13,6 @@ class Posts_Model extends Model
     protected $table = "posts";
 
     static public function getAllPosts(){
-        return DB::table('posts')->where(["status" => 1])->get(["post_id","post_title","post_thumb","post_description"]);
+        return DB::table('posts')->where(["status" => 1])->get(["post_id","user_id","post_title","post_thumb","post_description"]);
     }
 }

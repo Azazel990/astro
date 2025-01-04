@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Gate;
 
 use App\Models\Posts_Model as Post_Model;
 
@@ -50,5 +51,21 @@ class Posts extends Controller
         ]);
 
         return back()->with('success', 'Image uploaded successfully.')->with('image_path', Storage::url($path));
+    }
+
+    public function updatePost(int $post_id = 0){
+        $post = Post_Model::where(["post_id" => $post_id])->get()->first();
+        
+        // checking if user is allowed to update post
+        if(Gate::denies("check-update-user",$post)){
+            return redirect("dashboard");
+        }
+
+        if(View::exists("layouts.base")){
+            $this->data["main_view"] = "update_post";
+            $this->data["name"] = auth()->user()->username;
+            $this->data["page_title"] = "Update Post";
+            return view("layouts.base",$this->data);
+        }
     }
 }

@@ -20,6 +20,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get("edit",[User::class,'edit'])->name("edit");
     Route::get("password",[User::class,'change_password'])->name("change_password");
     Route::get("newPost",[Posts::class,'newPost'])->name("newPost");
+    Route::get("post/update/{post_id?}",[Posts::class,'updatePost'])->whereNumber('post_id')->name("updatePost");
     
     Route::get("compressImage",[Posts::class,'compressImage'])->name("compressImage");
 
