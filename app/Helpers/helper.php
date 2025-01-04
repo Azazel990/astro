@@ -1,5 +1,6 @@
 <?php
 // helpers.php
+use Illuminate\Support\Facades\Gate;
 
 function pr($data = []){
     echo "<pre>";print_r($data);echo "</pre>";exit;
@@ -20,5 +21,9 @@ function getUploadPath($path = ""){
 
 function getLoggedInUserName(){
     return auth()->user()->username;
+}
+
+function checkUserPostUpdate($post){
+    return Gate::allows("check-update-user",$post);
 }
 ?>

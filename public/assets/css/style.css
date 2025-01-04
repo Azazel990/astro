@@ -30236,4 +30236,8 @@ new-task label input[type=checkbox] {
     margin-right: auto;
 }
 
+.card-body .actions .feather{
+    font-size: 21px;
+}
+
 /* custom css */

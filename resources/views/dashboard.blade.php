@@ -19,9 +19,16 @@
                                 <h5 class="card-title"><?php echo $post->post_title ?></h5>
                                 <p class="card-text"><?php echo $post->post_description ?></p>
                             </div>
-                            <div class="actions">
-                                <a href="<?php echo route('updatePost').'/'.$post->post_id ?>"><i class="feather icon-edit"></i></a>
-                            </div>
+                            <?php 
+                                if(checkUserPostUpdate($post)){
+                                    ?>
+                                        <div class="actions">
+                                            <a href="<?php echo route('updatePost').'/'.$post->post_id ?>"><i class="feather icon-edit"></i></a>
+                                        </div>
+                                    <?php
+                                }
+                            ?>
+                          
                         </div>
                         <div class="card-footer">
                             <small class="text-muted">Last updated 3 mins ago</small>
