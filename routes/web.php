@@ -15,8 +15,8 @@ Route::get('/', [Login::class,'index']);
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::get("dashboard",[Dashboard::class,'index'])->name("dashboard");
-    Route::get("profile",[User::class,'index'])->name("profile");
+    Route::get("dashboard/{preference?}",[Dashboard::class,'index'])->whereNumber('preference')->name("dashboard");
+    Route::get("profile/{profile_id?}",[User::class,'index'])->name("profile");
     Route::get("edit",[User::class,'edit'])->name("edit");
     Route::get("password",[User::class,'change_password'])->name("change_password");
     Route::get("post/new",[Posts::class,'newPost'])->name("newPost");
@@ -27,6 +27,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post("change_password_post",[User::class,'change_password_post'])->name("change_password_post");
     Route::post("createNewPost",[Posts::class,'createNewPost'])->name("createNewPost");
     Route::post("updatePostDB",[Posts::class,'updatePostDB'])->name("updatePostDB");
+    Route::post("follow",[User::class,'followThisUser'])->name("follow");
 });
 
 Route::redirect("/home","/");
@@ -42,4 +43,3 @@ Route::post("signupUser",[Login::class,"signupUser"]);
 Route::view('base_template', 'base_template');
 
 Route::post('logout', [Ajax::class,"logMeOut"])->name("logout");
-

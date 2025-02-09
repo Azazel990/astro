@@ -59,7 +59,7 @@ class User extends Authenticatable
         ]);
     }
 
-    // static public function editProfile($username = null,$email = null){
-    //     return DB::table('users')
-    // }
+    static public function getFollowingList(){
+        return DB::table('users')->where('id',auth()->user()->id)->get('following')->first()->following;
+    }
 }

@@ -23,6 +23,6 @@ class Posts_Model extends Model
     ];
 
     static public function getAllPosts(){
-        return DB::table('posts')->where(["status" => 1])->get(["post_id","user_id","post_title","post_thumb","post_description"]);
+        return DB::table('posts')->join('users','users.id','=','posts.user_id')->where(["posts.status" => 1])->get(["users.username","users.following","posts.post_id","posts.user_id","posts.post_title","posts.post_thumb","posts.post_description"]);
     }
 }

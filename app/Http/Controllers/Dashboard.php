@@ -17,7 +17,7 @@ class Dashboard extends Controller
         parent::__construct();
     }
 
-    public function index(){
+    public function index(int $preference = 1){
         if(View::exists("layouts.base")){
 
             $user = auth()->user();
@@ -27,7 +27,17 @@ class Dashboard extends Controller
             $this->data["page_title"] = "Dashboard";
 
             // get User's Posts
-            $this->data["posts"] = Posts_Model::getAllPosts();
+            $posts = Posts_Model::getAllPosts();
+            if($preference != 1){
+                $all_gates = ['2' => "my-posts",'3' =>'is-following'];
+                $gate_used = isset($all_gates[$preference]) ? $all_gates[$preference] : 1;
+                foreach($posts as $index => $post){
+                    if(Gate::denies($gate_used,$post)){
+                        unset($posts[$index]);
+                    }
+                }
+            }
+            $this->data["posts"] = $posts;
             // get User's Posts
 
             return view("layouts.base",$this->data);

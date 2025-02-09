@@ -30239,5 +30239,12 @@ new-task label input[type=checkbox] {
 .card-body .actions .feather{
     font-size: 21px;
 }
-
+.card-footer img{
+    height: 35px;
+    width : 35px;
+    border-radius : 50%;
+}
+.card-footer small{
+    font-size : 18px;
+}
 /* custom css */

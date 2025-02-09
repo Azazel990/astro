@@ -11,12 +11,12 @@ use App\Models\User as User_Model;
 
 class User extends Controller
 {
-    public function index(){
+    public function index($profile_id = null){
         if(View::exists("layouts.base")){
             $this->data["main_view"] = "user_profile";
             $this->data["page_title"] = "Profile";
 
-            $this->data["user"] = auth()->user();
+            $this->data["user"] = is_null($profile_id) ? auth()->user() : User_Model::where("id",$profile_id)->get()->first();
 
             return view("layouts.base",$this->data);
         }
@@ -105,5 +105,27 @@ class User extends Controller
         }
     }
 
+
+    public function followThisUser(){
+        $profile_id = $_POST["profile_id"];
+
+        $following = User_Model::getFollowingList();
+        $following = !empty($following) ? explode(",",$following) : [];
+        if(!in_array($profile_id,$following)){
+            array_push($following,$profile_id);
+        }
+        $following = implode(",",$following);
+
+        $user = auth()->user();
+
+        $result = User_Model::where("id",$user->id)->update(["following" => $following]);
+
+        if($result){
+            return response()->json([
+                'success' => true,
+                'message' => 'Successfully Following User!',
+            ], 200);
+        }
+    }
    
 }

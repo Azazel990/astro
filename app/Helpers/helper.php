@@ -26,4 +26,14 @@ function getLoggedInUserName(){
 function checkUserPostUpdate($post){
     return Gate::allows("check-update-user",$post);
 }
+
+function checkIfUserAllowedToEdit($guest){
+    return Gate::allows("edit-profile",$guest);
+}
+
+
+function getProfilePic($path = ""){
+    return url('assets/images/profile/bg-2.jpg');
+}
+
 ?>

@@ -30,6 +30,19 @@ class AppServiceProvider extends ServiceProvider
         Gate::define("check-update-user",function(User $user,$post){
             return $user->id === $post->user_id ? Response::allow() : Response::denyWithStatus(401);
         });
+
+        Gate::define('my-posts',function(User $user,$post){
+            return $user->id === $post->user_id ? Response::allow() : Response::denyWithStatus(401);
+        });
+
+        Gate::define('edit-profile',function(User $user,$guest){
+            return $user->id === $guest->id ? Response::allow() : Response::denyWithStatus(401);
+        });
+
+        Gate::define('is-following',function(User $user,$guest){
+            $following = !empty($user->following) ? explode(",",$user->following) : [];
+            return in_array($guest->user_id,$following) ? Response::allow() : Response::denyWithStatus(401);
+        });
         // Check update user...
     }
 }
