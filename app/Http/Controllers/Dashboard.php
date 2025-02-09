@@ -27,13 +27,7 @@ class Dashboard extends Controller
             $this->data["page_title"] = "Dashboard";
 
             // get User's Posts
-            $posts = Posts_Model::getAllPosts();
-            // foreach($posts as $index => $post){
-            //     if(Gate::denies("view-post",$post)){
-            //         unset($posts[$index]);
-            //     }
-            // }
-            $this->data["posts"] = $posts;
+            $this->data["posts"] = Posts_Model::getAllPosts();
             // get User's Posts
 
             return view("layouts.base",$this->data);
