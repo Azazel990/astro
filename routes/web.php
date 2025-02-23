@@ -6,12 +6,15 @@ use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\User;
 use App\Http\Controllers\Posts;
 use App\Http\Controllers\Ajax;
+use App\Http\Controllers\Test;
 
 Route::get('/', [Login::class,'index']);
 
 // Route::get('/sample/{number}', function ($number = 0) {
 //     return view('sample',["number" => $number]);
 // });
+
+Route::get("/test",[Test::class,'astro'])->name("astro");
 
 Route::middleware(['auth'])->group(function () {
 
