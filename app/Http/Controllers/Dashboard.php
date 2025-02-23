@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Gate;
-
+use Illuminate\Support\Facades\Cache;
 use App\Models\Posts_Model;
 
 class Dashboard extends Controller
@@ -27,7 +27,12 @@ class Dashboard extends Controller
             $this->data["page_title"] = "Dashboard";
 
             // get User's Posts
-            $posts = Posts_Model::getAllPosts();
+            if(!Cache::has('posts')){
+                Cache::add('posts', Posts_Model::getAllPosts(), now()->addMinutes(10));
+            }
+
+            $posts = Cache::get('posts');
+
             if($preference != 1){
                 $all_gates = ['2' => "my-posts",'3' =>'is-following'];
                 $gate_used = isset($all_gates[$preference]) ? $all_gates[$preference] : 1;
@@ -44,3 +49,5 @@ class Dashboard extends Controller
         }
     }  
 }
+
+?>
